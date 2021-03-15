@@ -5,7 +5,7 @@
 
 ## Directly using Heroku CLI
 
-``
+```
     git add .
     git commit -m "m"
     heroku login 
