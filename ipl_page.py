@@ -50,10 +50,8 @@ def app():
 
     
     #st.sidebar.title('Team Profile')
-
     #all_ipl_teams=("Chennai Super Kings", "Delhi Capitals", "Punjab Kings", "Kolkata Knight Riders",
     #        "Mumbai Indians", "Rajasthan Royals", "Royal Challengers Bangalore", "Sunrisers Hyderabad")
-    
     #team_name = st.sidebar.selectbox(label="Team name", 
     #                                options=all_ipl_teams)
     Footer()
