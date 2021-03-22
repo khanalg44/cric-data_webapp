@@ -10,15 +10,15 @@ from find_name import find_name
 from footer import Footer
 
 def app():
-    st.title("Welcome to IPL-cric-data!")
+    st.title("Welcome to T20I-cric-data!")
     st.sidebar.title('Find Player Profile')
-    user_input_player = st.sidebar.text_input(label="Enter Cricketer's Name Eg. (Tendulkar)")#, value="SR Tendulkar")
+    user_input_player = st.sidebar.text_input(label="Enter Cricketer's Name Eg. (DA Warner)")#, value="SR Tendulkar")
 
     if not user_input_player:
         st.write("You can try putting a cricket player's name in the left panel to see his profile as well as visualise the data.")
 
     if user_input_player:
-        player_name = find_name(user_input_player, ipl=True)
+        player_name = find_name(user_input_player, t20=True)
         #player_name = user_input_player
         
         if player_name is None:
@@ -32,12 +32,12 @@ def app():
                 bat = False
                 yaxis='Wickets'
         
-            year_from = st.sidebar.number_input("Year from", min_value=2008, max_value=2021, value = 2008, step=1)
-            year_to =   st.sidebar.number_input("Year to", min_value=2008, max_value=2021, value = 2021, step=1)
+            year_from = st.sidebar.number_input("Year from", min_value=2005, max_value=2021, value = 2005, step=1)
+            year_to =   st.sidebar.number_input("Year to", min_value=2005, max_value=2021, value = 2021, step=1)
             visualize = st.sidebar.checkbox(label="Visualize", value=False)
 
             st.markdown('**'+player_name+'**')
-            df = get_player_profile(player_name, batsman=bat, year_from=year_from, year_to=year_to, ipl=True)
+            df = get_player_profile(player_name, batsman=bat, year_from=year_from, year_to=year_to, t20=True)
             st.table(df)
             
             if visualize:

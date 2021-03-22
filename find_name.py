@@ -2,10 +2,14 @@
 
 import pickle
 
-def find_name(user_input, data_dir="./database/ipl/"):
+def find_name(user_input, data_dir="./database/", ipl=False, t20=False):
     user_input_lower = user_input.lower()
-    df_bat=pickle.load(open(data_dir+'batting_record_all_years.df', 'rb'))
-    df_bowl=pickle.load(open(data_dir+'bowling_record_all_years.df', 'rb'))
+    if ipl:
+        df_bat  = pickle.load(open(data_dir+'03_ipl/batting.df', 'rb'))
+        df_bowl = pickle.load(open(data_dir+'03_ipl/bowling.df', 'rb'))
+    elif t20:
+        df_bat  = pickle.load(open(data_dir+'01_t20s/batting.df', 'rb'))
+        df_bowl = pickle.load(open(data_dir+'01_t20s/bowling.df', 'rb'))
 
     all_batsman = list(df_bat['batsman'].values )
     all_bowlers = list(df_bowl['bowler'].values )

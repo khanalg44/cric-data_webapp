@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import datetime, pickle
 
-data_dir = "./database/ipl/"
+data_dir = "./database/"
 
 def add_overs(overs):
     # given a list of overs returns total over
@@ -44,10 +44,13 @@ def Over2Balls(Over):
         all_balls += int( ov_split[1] )
     return all_balls
 
-def get_player_profile(player, batsman=True, year_from=2008, year_to=2021):
+def get_player_profile(player, batsman=True, year_from=2008, year_to=2021, ipl=False, t20=False):
     
     if batsman:
-        df=pickle.load(open(data_dir+'batting_record_all_years.df', 'rb'))
+        if ipl:
+            df=pickle.load(open(data_dir+'03_ipl/batting.df', 'rb'))
+        elif t20:
+            df=pickle.load(open(data_dir+'01_t20s/batting.df', 'rb'))
 
         data_player=[]
         for season in range(year_from, year_to, 1): 
@@ -75,7 +78,10 @@ def get_player_profile(player, batsman=True, year_from=2008, year_to=2021):
         return df_p
 
     else:
-        df=pickle.load(open(data_dir+'bowling_record_all_years.df', 'rb'))
+        if ipl:
+            df=pickle.load(open(data_dir+'03_ipl/bowling.df', 'rb'))
+        elif t20:
+            df=pickle.load(open(data_dir+'01_t20s/bowling.df', 'rb'))
 
         data_player=[]
         for season in range(year_from, year_to, 1):
@@ -86,7 +92,7 @@ def get_player_profile(player, batsman=True, year_from=2008, year_to=2021):
                 Team_ = dfp.Team.values[0]
                 Ovs_  = add_overs(dfp['O'].values)
                 Wkts_ = dfp['W'].sum()
-                Runs_ = dfp['R'].sum()
+                Runs_ = dfp['Runs'].sum()
 
                 #HS_   = max(dfp.Runs) to be calculated for best bowling figures
                 
@@ -114,15 +120,13 @@ def get_player_profile(player, batsman=True, year_from=2008, year_to=2021):
         df_p = pd.DataFrame(data_player, columns=['season', 'Team', 'Innings', 'Overs', 'Wickets', 
                                                   'SR', 'Ave', 'Fours', 'Sixes', 'WDs', 'NBs',
                                                   '0-Fers', '3-Fers', '4-Fers', '5-Fers'])                       
-
         return df_p
 
 if __name__=="__main__":
     player='NA Saini'
-    #dfp=get_player_profile(player, batsman=False)
     #player='SK Raina'
-    #player='MS Dhoni'
-    dfp=get_player_profile(player, batsman=False)
+    player='MS Dhoni'
+    dfp=get_player_profile(player, batsman=True)
     #print (dfp)
     print (dfp)
     #df=get_match_list()

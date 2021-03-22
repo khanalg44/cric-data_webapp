@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import streamlit as st
-import home_page, ipl_page, odi_page
+import home_page, ipl_page, odi_page, t20_page
 
 all_pages = [
         ["Home Page", home_page.app], 
         ["IPL", ipl_page.app], 
+        ["T20I", t20_page.app], 
         ["ODI", odi_page.app], 
         ]
 
