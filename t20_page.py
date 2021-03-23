@@ -9,7 +9,6 @@ from get_profile import get_player_profile
 from find_name import find_name
 from top_players import top_players
 
-
 from footer import Footer
 
 
