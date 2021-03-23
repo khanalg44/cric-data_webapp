@@ -4,7 +4,6 @@ import pickle
 
 def find_name(user_input, data_dir="./database/", ipl=False, t20=False):
     user_input_lower = user_input.lower()
-
     if ipl:
         df_bat  = pickle.load(open(data_dir+'03_ipl/batting.df', 'rb'))
         df_bowl = pickle.load(open(data_dir+'03_ipl/bowling.df', 'rb'))
@@ -31,7 +30,6 @@ def find_name(user_input, data_dir="./database/", ipl=False, t20=False):
 
 if __name__=="__main__":
 
-    user_input = "Rohit Sharma"
-    name = find_name(user_input, t20=True)
-    print (name)
+    user_input = "Sangakkara"
+    print ( find_name(user_input) )
 
