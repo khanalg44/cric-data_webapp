@@ -23,3 +23,6 @@ git push -f heroku master
 - Push to Git using regular git push steps `git add .; git commit -m 'message'; git push -u origin master`
 - Go to your app in `Heroku.com` and go to Deploy tab and then select connect to GitHub and then follow the steps therein.
 - For some reason the continuous deployment hasn't been working for me. So I have to deploy everytime I push my changes to git.
+
+# Resources for Streamlit
+- Some nice trick on [towardsdatascience](https://towardsdatascience.com/8-simple-and-useful-streamlit-tricks-you-should-know-ad16c6691b84)
